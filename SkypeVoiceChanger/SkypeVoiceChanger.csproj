@@ -79,7 +79,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
@@ -127,7 +127,7 @@
     <Compile Include="Audio\AudioOutputInfo.cs" />
     <Compile Include="Audio\AudioPipeline.cs" />
     <Compile Include="Audio\IAudioProcessor.cs" />
-    <Compile Include="Audio\SkypeAudioInterceptor.cs" />
+    <Content Include="Audio\SkypeAudioInterceptor.cs.txt" />
     <Compile Include="Audio\SkypeBufferProvider.cs" />
     <Compile Include="Audio\SkypeStatus.cs" />
     <Compile Include="Audio\TcpServer.cs" />
@@ -295,17 +295,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="SKYPE4COMLib">
-      <Guid>{03282B5D-B38F-469D-849A-09B0A7F4881B}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>True</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\arrow-down_ffffff_32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -338,7 +327,9 @@
   <ItemGroup>
     <None Include="Resources\times_ffffff_32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Skype4COM.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

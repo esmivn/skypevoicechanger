@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using MetroFramework.Forms;
-using SKYPE4COMLib;
+//using SKYPE4COMLib;
 using SkypeVoiceChanger.Audio;
 using SkypeVoiceChanger.Effects;
 using SkypeVoiceChanger.Views;
@@ -16,7 +16,7 @@ namespace SkypeVoiceChanger
         readonly AudioPipeline audioPipeline;
         private readonly EffectChain effectChain;
         private readonly AudioPlaybackGraph audioPlaybackGraph;
-        private SkypeAudioInterceptor audioInterceptor;
+        //private SkypeAudioInterceptor audioInterceptor;
         private readonly ILog log;
         private readonly ConnectionStatusPage connectionStatusPage;
         private readonly EffectsPage effectsPage;
@@ -40,28 +40,28 @@ namespace SkypeVoiceChanger
 
         public void ConnectToSkype()
         {
-            audioPlaybackGraph.Stop();
-            DisconnectFromSkype();
-            if (audioInterceptor == null)
-            {
-                var skype = new Skype();
+            //audioPlaybackGraph.Stop();
+            //DisconnectFromSkype();
+            //if (audioInterceptor == null)
+            //{
+            //    var skype = new Skype();
 
-                audioInterceptor = new SkypeAudioInterceptor(skype, skype, log, audioPipeline);
+            //    audioInterceptor = new SkypeAudioInterceptor(skype, skype, log, audioPipeline);
 
-                audioInterceptor.SkypeStatusChanged += AudioInterceptorOnSkypeStatusChanged;
-                AudioInterceptorOnSkypeStatusChanged(this, EventArgs.Empty);// get initial state set up
-            }
-            audioInterceptor.Attach();
+            //    audioInterceptor.SkypeStatusChanged += AudioInterceptorOnSkypeStatusChanged;
+            //    AudioInterceptorOnSkypeStatusChanged(this, EventArgs.Empty);// get initial state set up
+            //}
+            //audioInterceptor.Attach();
         }
 
         public void DisconnectFromSkype()
         {
-            if (audioInterceptor != null)
-            {
-                audioInterceptor.SkypeStatusChanged -= AudioInterceptorOnSkypeStatusChanged;
-                audioInterceptor.Dispose();
-                audioInterceptor = null;
-            }
+            //if (audioInterceptor != null)
+            //{
+            //    audioInterceptor.SkypeStatusChanged -= AudioInterceptorOnSkypeStatusChanged;
+            //    audioInterceptor.Dispose();
+            //    audioInterceptor = null;
+            //}
         }
 
 
@@ -88,12 +88,12 @@ namespace SkypeVoiceChanger
 
         private void AudioInterceptorOnSkypeStatusChanged(object sender, EventArgs eventArgs)
         {
-            connectionStatusPage.ConnectionStatus = audioInterceptor.SkypeStatus;
-            effectsPage.ConnectionStatus = audioInterceptor.SkypeStatus;
-            if (startup && audioInterceptor.SkypeStatus == SkypeStatus.WaitingForCall)
-            {
-                metroTabControl1.SelectedIndex = 1; // move to effects page
-            }
+            //connectionStatusPage.ConnectionStatus = audioInterceptor.SkypeStatus;
+            //effectsPage.ConnectionStatus = audioInterceptor.SkypeStatus;
+            //if (startup && audioInterceptor.SkypeStatus == SkypeStatus.WaitingForCall)
+            //{
+            //    metroTabControl1.SelectedIndex = 1; // move to effects page
+            //}
         }
     }
 }
